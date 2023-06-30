@@ -6,11 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
-class CartCoordinator{
-    private unowned let parent: Coordinator!
+class CartCoordinator: Coordinator{
+    func start() -> any View {
+        Text("2")
+    }
+    
+    var childs: [Coordinator]
+    var parent: Coordinator!
+    var scene: Scenes
     
     init(parent: Coordinator!) {
+        self.childs = []
         self.parent = parent
+        self.scene = .cart
     }
 }

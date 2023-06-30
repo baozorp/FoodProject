@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  MainCategoryView.swift
 //  FoodProject
 //
 //  Created by Михаил Шекунов on 29.06.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MainView: View {
-    @ObservedObject var coordinator: MainCoordinator
-    @ObservedObject var mainViewModel: MainViewModel
+struct MainCategoryView: View {
+    unowned let coordinator: MainCategoryCoordinator
+    @ObservedObject var mainCategoryViewModel: MainCategoryViewModel
     
     private var date: String{
         let dateFormatter = DateFormatter()
@@ -22,10 +22,11 @@ struct MainView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ForEach(mainViewModel.categories) { category in
-                NavigationLink(destination: CVP()){
+            ForEach(mainCategoryViewModel.categories) { category in
+                NavigationLink(destination: mainCategoryViewModel.getDestinashion(category: category.name)){
                     CategoryView(category: category)
                 }
+                .buttonStyle(.plain)
             }
 
         }
@@ -39,6 +40,7 @@ struct MainView: View {
             Image(uiImage: category.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+            
             GeometryReader { geometry in
                 Text(category.name)
                     .foregroundColor(.black)
@@ -53,6 +55,7 @@ struct MainView: View {
     }
     
     // For leading Navigation Bar items
+    @ViewBuilder
     private var leadingBarContent: some View {
         HStack {
             Image(systemName: "mappin.and.ellipse")
@@ -60,7 +63,7 @@ struct MainView: View {
                 Text("Москва")
                     .fontWeight(.semibold)
                     .frame(alignment: .leading)
-                    .font(.title3)
+                    .font(.subheadline)
                 Text(date)
                     .foregroundColor(Color(
                         red: Double(0) / 255,
@@ -69,11 +72,12 @@ struct MainView: View {
                         opacity: Double(255/2) / 255)
                     )
                     .frame(alignment: .leading)
-                    .font(.subheadline)
+                    .font(.caption)
             }
             Spacer()
         }
-        .padding(.bottom, 3)
+        .padding(.vertical, 3)
+        
     }
     
     // For trailing Navigation Bar items
@@ -84,17 +88,8 @@ struct MainView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(Circle())
-                .padding(.bottom, 3)
         }
-
+        .padding(.vertical, 3)
     }
     
-}
-
-
-
-struct CVP: View{
-    var body: some View{
-        Text("New screen")
-    }
 }

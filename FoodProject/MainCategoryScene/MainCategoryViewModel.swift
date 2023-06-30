@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  MainCategoryViewModel.swift
 //  FoodProject
 //
 //  Created by Михаил Шекунов on 29.06.2023.
@@ -7,13 +7,17 @@
 
 import Foundation
 
-class MainViewModel: ObservableObject{
+class MainCategoryViewModel: ObservableObject{
     
     @Published var categories: [CategoryModel] = []
     
-    private unowned let coordinator: MainCoordinator
+    private unowned let coordinator: MainCategoryCoordinator
     
-    init(coordinator: MainCoordinator) {
+    func getDestinashion(category: String) -> MainDishView{
+        coordinator.nextDestination(category: category) as! MainDishView
+    }
+    
+    init(coordinator: MainCategoryCoordinator) {
         self.coordinator = coordinator
         DispatchQueue.global(qos: .userInteractive).async{
             CategoryGetter.getCategories(completion: {[weak self] categories in
