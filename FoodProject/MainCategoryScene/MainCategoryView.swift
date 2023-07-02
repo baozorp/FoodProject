@@ -22,37 +22,38 @@ struct MainCategoryView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ForEach(mainCategoryViewModel.categories) { category in
-                NavigationLink(destination: mainCategoryViewModel.getDestinashion(category: category.name)){
-                    CategoryView(category: category)
+            VStack{
+                ForEach(mainCategoryViewModel.categories) { category in
+                    NavigationLink(destination: mainCategoryViewModel.getDestinashion(category: category.name)){
+                        ZStack(alignment: .topLeading) {
+                            Image(uiImage: category.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                            
+                            GeometryReader { geometry in
+                                Text(category.name)
+                                    .foregroundColor(.black)
+                                    .font(.title)
+                                    .fontWeight(.semibold)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(2)
+                                    .frame(width: geometry.size.width * 0.8, alignment: .topLeading)
+                                    .padding()
+                            }
+                        }
+                    }
+                    .onTapGesture {
+                        print("Print 1")
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
-
+            .padding(.vertical)
         }
-        .navigationBarItems(leading: leadingBarContent, trailing: trailingBarContent)
         .padding(.horizontal)
+        .navigationBarItems(leading: leadingBarContent, trailing: trailingBarContent)
     }
     
-    // For categories
-    private func CategoryView(category: CategoryModel) -> some View {
-        ZStack(alignment: .topLeading) {
-            Image(uiImage: category.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-            GeometryReader { geometry in
-                Text(category.name)
-                    .foregroundColor(.black)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(2)
-                    .frame(width: geometry.size.width * 0.8, alignment: .topLeading)
-                    .padding()
-            }
-        }
-    }
     
     // For leading Navigation Bar items
     @ViewBuilder
@@ -77,10 +78,10 @@ struct MainCategoryView: View {
             Spacer()
         }
         .padding(.vertical, 3)
-        
     }
     
     // For trailing Navigation Bar items
+    @ViewBuilder
     private var trailingBarContent: some View {
         HStack{
             Spacer()

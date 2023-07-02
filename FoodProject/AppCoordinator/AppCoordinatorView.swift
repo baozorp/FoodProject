@@ -11,25 +11,32 @@ struct AppCoordinatorView: View {
     
     unowned let coordinator: AppCoordinator
     @ObservedObject var appCoordinatorViewModel: AppCoordinatorViewModel
-    
+    @State private var selectedTab: Scenes = .main
     
     var body: some View {
-        TabView{
+        
+        TabView(selection: $selectedTab){
             ForEach(appCoordinatorViewModel.appElements){element in
                 NavigationView {
                     switch element.scene{
                     case .main:
                         element.view as! MainCategoryView
-
                     default:
-                        Text("2")
+                        Text(element.name).navigationTitle("s")
                     }
-                }.tabItem {
+                }
+                .onAppear{let navigationBarAppearance = UINavigationBarAppearance()
+                          navigationBarAppearance.configureWithOpaqueBackground()
+                          UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance}
+                .tabItem {
                     element.image
                     Text(element.name)
                 }
+                .tag(element.scene)
             }
         }
+        .tint(.blue)
+
     }
     
     init(coordinator: AppCoordinator, appCoordinatorViewModel: AppCoordinatorViewModel) {
@@ -37,11 +44,9 @@ struct AppCoordinatorView: View {
         self.appCoordinatorViewModel = appCoordinatorViewModel
     }
 }
-//
-//struct CoordinatorView_Previews: PreviewProvider {
-//    
-//    static var previews: some View {
-//        @StateObject var coordinator = AppCoordinator()
-//        AppCoordinatorView(coordinator: coordinator)
-//    }
-//}
+
+struct AppCoordinatorView_Previews: PreviewProvider {
+    static var previews: some View {
+        AppCoordinator().start() as! AppCoordinatorView
+    }
+}

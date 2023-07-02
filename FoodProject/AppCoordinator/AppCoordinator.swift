@@ -26,28 +26,24 @@ protocol Coordinator{
 
 class AppCoordinator: Coordinator{
         
+    var scene: Scenes
     var childs: [Coordinator] = []
     var parent: Coordinator!
     
-    private var coordinatorViewModel: AppCoordinatorViewModel!
+    var coordinatorViewModel: AppCoordinatorViewModel!
     private var coordinatorView: AppCoordinatorView!
     
     func start() -> any View {
+        //TODO: Add searchCoordinator, accountCoordinator
         self.childs.append(MainCategoryCoordinator(parent: self))
+        self.childs.append(SearchCoordinator(parent: self))
         self.childs.append(CartCoordinator(parent: self))
+        self.childs.append(AccountCoordinator(parent: self))
         self.coordinatorViewModel = AppCoordinatorViewModel(coordinator: self)
         self.coordinatorView = AppCoordinatorView(coordinator: self, appCoordinatorViewModel: self.coordinatorViewModel)
         return coordinatorView
     }
     
-    
-    var scene: Scenes
-    
-    static var appScene: Scenes = .main
-//    var mainCoordinator: MainCategoryCoordinator!
-//    var cartCoordinator: CartCoordinator!
-    //TODO: Add searchCoordinator, accountCoordinator
-
     
     init() {
         self.scene = .main

@@ -14,6 +14,7 @@ class MainCategoryCoordinator: Coordinator{
     var childs: [Coordinator] = []
     var parent: Coordinator!
     
+    
     private var mainViewModel: MainCategoryViewModel!
     private var mainView: MainCategoryView!
 

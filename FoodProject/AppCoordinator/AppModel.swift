@@ -22,12 +22,15 @@ class AppModel: Identifiable{
         case .main:
             self.image = Image(systemName: "house.fill")
             self.name = "Главная"
+        case .search:
+            self.image = Image(systemName: "magnifyingglass")
+            self.name = "Поиск"
         case .cart:
             self.image = Image(systemName: "basket")
             self.name = "Корзина"
-        default:
-            self.image = Image(uiImage: UIImage())
-            self.name = ""
+        case .account:
+            self.image = Image(systemName: "person.circle")
+            self.name = "Аккаунт"
         }
     }
 }

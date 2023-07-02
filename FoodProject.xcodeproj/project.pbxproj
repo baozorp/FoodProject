@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B40458DB2A4F57EE004950C5 /* AppCoordinatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40458DA2A4F57EE004950C5 /* AppCoordinatorViewModel.swift */; };
 		B40458DD2A4F5B9E004950C5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40458DC2A4F5B9E004950C5 /* AppModel.swift */; };
+		B40771D82A4F89CC0013161F /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40771D72A4F89CC0013161F /* SearchCoordinator.swift */; };
+		B40771DC2A4F8A340013161F /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40771DB2A4F8A340013161F /* AccountCoordinator.swift */; };
 		B40C68062A4F50FA00F9C26A /* MainDishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68052A4F50FA00F9C26A /* MainDishCoordinator.swift */; };
 		B40C68082A4F510700F9C26A /* MainDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68072A4F510700F9C26A /* MainDishView.swift */; };
 		B40C680A2A4F511400F9C26A /* MainDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68092A4F511400F9C26A /* MainDishViewModel.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		B40458DA2A4F57EE004950C5 /* AppCoordinatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorViewModel.swift; sourceTree = "<group>"; };
 		B40458DC2A4F5B9E004950C5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		B40771D72A4F89CC0013161F /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		B40771DB2A4F8A340013161F /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		B40C68052A4F50FA00F9C26A /* MainDishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishCoordinator.swift; sourceTree = "<group>"; };
 		B40C68072A4F510700F9C26A /* MainDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishView.swift; sourceTree = "<group>"; };
 		B40C68092A4F511400F9C26A /* MainDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishViewModel.swift; sourceTree = "<group>"; };
@@ -56,6 +60,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B40771D92A4F89D10013161F /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				B40771D72A4F89CC0013161F /* SearchCoordinator.swift */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		B40771DA2A4F8A130013161F /* AccountScene */ = {
+			isa = PBXGroup;
+			children = (
+				B40771DB2A4F8A340013161F /* AccountCoordinator.swift */,
+			);
+			path = AccountScene;
+			sourceTree = "<group>";
+		};
 		B40C68042A4F4FD600F9C26A /* MainDishScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +111,8 @@
 				B40C68042A4F4FD600F9C26A /* MainDishScene */,
 				B44093612A4DCE16001475A4 /* FoodProjectApp.swift */,
 				B4A01A932A4DFFA000243F7C /* CartScene */,
+				B40771D92A4F89D10013161F /* SearchScene */,
+				B40771DA2A4F8A130013161F /* AccountScene */,
 				B44093652A4DCE17001475A4 /* Assets.xcassets */,
 				B44093672A4DCE17001475A4 /* Preview Content */,
 			);
@@ -108,9 +130,9 @@
 		B4A01A832A4DF17600243F7C /* AppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				B4A01A862A4DF26100243F7C /* AppCoordinator.swift */,
 				B4A01A972A4E02AD00243F7C /* AppCoordinatorView.swift */,
 				B40458DA2A4F57EE004950C5 /* AppCoordinatorViewModel.swift */,
+				B4A01A862A4DF26100243F7C /* AppCoordinator.swift */,
 				B40458DC2A4F5B9E004950C5 /* AppModel.swift */,
 			);
 			path = AppCoordinator;
@@ -214,8 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4A01A902A4DFE4100243F7C /* MainCategoryViewModel.swift in Sources */,
+				B40771D82A4F89CC0013161F /* SearchCoordinator.swift in Sources */,
 				B40C68062A4F50FA00F9C26A /* MainDishCoordinator.swift in Sources */,
 				B4A01A922A4DFE5300243F7C /* MainCategoryCoordinator.swift in Sources */,
+				B40771DC2A4F8A340013161F /* AccountCoordinator.swift in Sources */,
 				B40C680A2A4F511400F9C26A /* MainDishViewModel.swift in Sources */,
 				B4A01A8E2A4DFE3300243F7C /* MainCategoryView.swift in Sources */,
 				B4A01A9B2A4E0DD300243F7C /* DishModel.swift in Sources */,

@@ -11,7 +11,9 @@ import SwiftUI
 struct DishModel: Identifiable{
     let id: Int
     let name: String
-    var image: UIImage
+    var weight: Int
+    var description: String
+    let imageURL: String
 }
 
 fileprivate struct ResponseCategoryDecoder: Decodable{
@@ -63,11 +65,9 @@ class DishGetter{
                 
                 for i in categoriesJson.dishes {
                     dispatchGroup.enter()
-                    getImage(i.imageURL) { image in
-                        let dish = DishModel(id: i.id, name: i.name, image: image)
-                        dishes.append(dish)
-                        dispatchGroup.leave()
-                    }
+                    let dish = DishModel(id: i.id, name: i.name, weight: i.weight, description: i.description, imageURL: i.imageURL)
+                    dishes.append(dish)
+                    dispatchGroup.leave()
                 }
                 dispatchGroup.notify(queue: .main) {
                     completion(dishes)
@@ -78,36 +78,6 @@ class DishGetter{
         task.resume()
     }
     
-    private static func getImage(_ image_url: String, completion: @escaping (UIImage) -> Void) {
-        guard let url = URL(string: image_url) else {
-            // Обработка ошибки в случае неверного URL
-            completion(UIImage())
-            return
-        }
-        
-        let session = URLSession.shared
-        let task = session.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print(error)
-                completion(UIImage())
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                let response = response as? HTTPURLResponse
-                print("Response image statuscode is \(response?.statusCode ?? -1)")
-                completion(UIImage())
-                return
-            }
-            
-            if let data = data {
-                let image = UIImage(data: data) ?? UIImage()
-                completion(image)
-            }
-        }
-        
-        task.resume()
-    }
     
     
     private init(){

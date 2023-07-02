@@ -105,8 +105,6 @@ class CategoryGetter{
         
         task.resume()
     }
-    
-    
     private init(){
     }
 }
