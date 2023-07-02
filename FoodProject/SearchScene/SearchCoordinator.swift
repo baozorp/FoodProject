@@ -9,17 +9,20 @@ import Foundation
 import SwiftUI
 
 class SearchCoordinator: Coordinator{
-    func start() -> any View {
-        Text("Search scene")
-    }
     
     var childs: [Coordinator]
     var parent: Coordinator!
     var scene: Scenes
+    var cache: ImageCache
     
-    init(parent: Coordinator!) {
+    func start() -> any View {
+        Text("Search scene")
+    }
+    
+    init(parent: Coordinator!, cache: ImageCache) {
         self.childs = []
         self.parent = parent
         self.scene = .search
+        self.cache = cache
     }
 }

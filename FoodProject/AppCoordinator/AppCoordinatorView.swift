@@ -22,7 +22,7 @@ struct AppCoordinatorView: View {
                     case .main:
                         element.view as! MainCategoryView
                     default:
-                        Text(element.name).navigationTitle("s")
+                        Text(element.name)
                     }
                 }
                 .onAppear{let navigationBarAppearance = UINavigationBarAppearance()

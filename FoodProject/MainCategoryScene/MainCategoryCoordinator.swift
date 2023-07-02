@@ -13,6 +13,7 @@ class MainCategoryCoordinator: Coordinator{
     var scene: Scenes = .main
     var childs: [Coordinator] = []
     var parent: Coordinator!
+    var cache: ImageCache
     
     
     private var mainViewModel: MainCategoryViewModel!
@@ -24,13 +25,14 @@ class MainCategoryCoordinator: Coordinator{
     }
     
     func nextDestination(category: String) -> any View{
-        self.childs = [MainDishCoordinator(parent: self, category: category)]
+        self.childs = [MainDishCoordinator(parent: self, category: category, cache: cache)]
         return self.childs[0].start()
     }
     
     
-    init(parent: Coordinator!) {
+    init(parent: Coordinator!, cache: ImageCache) {
         self.parent = parent
+        self.cache = cache
         self.mainViewModel = MainCategoryViewModel(coordinator: self)
         self.mainView = MainCategoryView(coordinator: self, mainCategoryViewModel: self.mainViewModel)
     }

@@ -20,7 +20,8 @@ class MainCategoryViewModel: ObservableObject{
     init(coordinator: MainCategoryCoordinator) {
         self.coordinator = coordinator
         DispatchQueue.global(qos: .userInteractive).async{
-            CategoryGetter.getCategories(completion: {[weak self] categories in
+            let categoryGetter = CategoryGetter()
+            categoryGetter.getCategories(completion: {[weak self] categories in
                 DispatchQueue.main.async {
                     self?.categories = categories
                 }

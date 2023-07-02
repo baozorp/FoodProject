@@ -1,5 +1,5 @@
 //
-//  DishModel.swift
+//  CategoryModel.swift
 //  FoodProject
 //
 //  Created by Михаил Шекунов on 29.06.2023.
@@ -8,38 +8,31 @@
 import Foundation
 import SwiftUI
 
-struct DishModel: Identifiable{
+struct CategoryModel: Identifiable{
     let id: Int
     let name: String
-    let price: Int
-    var weight: Int
-    var description: String
-    let imageURL: String
+    var imageURL: String
 }
 
 fileprivate struct ResponseCategoryDecoder: Decodable{
-    let dishes: [DishDecoder]
+    let сategories: [CategoryDecoder]
 }
 
-fileprivate struct DishDecoder: Decodable{
+fileprivate struct CategoryDecoder: Decodable{
     let id: Int
     let name: String
-    let price: Int
-    let weight: Int
-    let description: String
     let imageURL: String
     
     enum CodingKeys: String, CodingKey {
-        case id, name, price, weight, description
+        case id, name
         case imageURL = "image_url"
     }
 }
 
-class DishGetter{
-    func getDishes(completion: @escaping ([DishModel]) -> Void){
+class CategoryGetter{
+    func getCategories(completion: @escaping ([CategoryModel]) -> Void){
         
-        guard let url = URL(string: "https://run.mocky.io/v3/aba7ecaa-0a70-453b-b62d-0e326c859b3b") else {
-            // TODO: error handling
+        guard let url = URL(string: "https://run.mocky.io/v3/058729bd-1402-4578-88de-265481fd7d54") else {
             return
         }
         let session = URLSession.shared
@@ -47,10 +40,9 @@ class DishGetter{
         
         let task = session.dataTask(with: url) { data, response, error in
             
-            var dishes: [DishModel] = []
+            var categories: [CategoryModel] = []
             
             if let error = error {
-                // TODO: error handling
                 print(error)
                 return
             }
@@ -62,14 +54,15 @@ class DishGetter{
             
             if let data = data {
                 let categoriesJson = try! JSONDecoder().decode(ResponseCategoryDecoder.self, from: data)
-                for i in categoriesJson.dishes {
-                    let dish = DishModel(id: i.id, name: i.name, price: i.price, weight: i.weight, description: i.description, imageURL: i.imageURL)
-                    dishes.append(dish)
+                for i in categoriesJson.сategories {
+                    let category = CategoryModel(id: i.id, name: i.name, imageURL: i.imageURL)
+                    categories.append(category)
                 }
                 DispatchQueue.main.async{
-                    completion(dishes)
+                    completion(categories)
                 }
             }
+            
         }
         task.resume()
     }

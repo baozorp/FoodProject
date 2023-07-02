@@ -9,17 +9,22 @@ import Foundation
 import SwiftUI
 
 class CartCoordinator: Coordinator{
-    func start() -> any View {
-        Text("2")
-    }
     
     var childs: [Coordinator]
     var parent: Coordinator!
     var scene: Scenes
     
-    init(parent: Coordinator!) {
+    var cache: ImageCache
+    
+    func start() -> any View {
+        Text("2")
+    }
+    
+
+    init(parent: Coordinator!, cache: ImageCache) {
         self.childs = []
         self.parent = parent
         self.scene = .cart
+        self.cache = cache
     }
 }

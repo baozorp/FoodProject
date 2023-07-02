@@ -14,6 +14,7 @@ class MainDishCoordinator: Coordinator{
     var childs: [Coordinator] = []
     var parent: Coordinator!
     var category: String
+    var cache: ImageCache
     
     private var mainDishViewModel: MainDishViewModel!
     private var mainDishView: MainDishView!
@@ -22,10 +23,11 @@ class MainDishCoordinator: Coordinator{
         return mainDishView
     }
     
-    init(parent: Coordinator!, category: String) {
+    init(parent: Coordinator!, category: String, cache: ImageCache) {
         self.parent = parent
         self.category = category
-        self.mainDishViewModel = MainDishViewModel(coordinator: self)
+        self.cache = cache
+        self.mainDishViewModel = MainDishViewModel(coordinator: self, cache: cache)
         self.mainDishView = MainDishView(coordinator: self, mainDishViewModel: self.mainDishViewModel)
     }
 }

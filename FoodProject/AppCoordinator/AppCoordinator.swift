@@ -20,25 +20,28 @@ protocol Coordinator{
     var childs: [Coordinator]{get set}
     var parent: Coordinator! {get set}
     var scene: Scenes{get}
+    var cache: ImageCache{get}
     
     func start() -> any View
 }
+
 
 class AppCoordinator: Coordinator{
         
     var scene: Scenes
     var childs: [Coordinator] = []
     var parent: Coordinator!
+    let cache: ImageCache
     
     var coordinatorViewModel: AppCoordinatorViewModel!
     private var coordinatorView: AppCoordinatorView!
     
     func start() -> any View {
         //TODO: Add searchCoordinator, accountCoordinator
-        self.childs.append(MainCategoryCoordinator(parent: self))
-        self.childs.append(SearchCoordinator(parent: self))
-        self.childs.append(CartCoordinator(parent: self))
-        self.childs.append(AccountCoordinator(parent: self))
+        self.childs.append(MainCategoryCoordinator(parent: self, cache: cache))
+        self.childs.append(SearchCoordinator(parent: self, cache: cache))
+        self.childs.append(CartCoordinator(parent: self, cache: cache))
+        self.childs.append(AccountCoordinator(parent: self, cache: cache))
         self.coordinatorViewModel = AppCoordinatorViewModel(coordinator: self)
         self.coordinatorView = AppCoordinatorView(coordinator: self, appCoordinatorViewModel: self.coordinatorViewModel)
         return coordinatorView
@@ -47,6 +50,7 @@ class AppCoordinator: Coordinator{
     
     init() {
         self.scene = .main
+        self.cache = TemporaryImageCache()
         self.parent = self
     }
 }

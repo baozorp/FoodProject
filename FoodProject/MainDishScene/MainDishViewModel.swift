@@ -14,10 +14,12 @@ class MainDishViewModel: ObservableObject{
     
     private unowned let coordinator: MainDishCoordinator
     var category: String
+    var cache: ImageCache
     
     func getDishes(){
         DispatchQueue.global(qos: .userInteractive).async{
-            DishGetter.getCategories(completion: {[weak self] dishes in
+            let dishGetter = DishGetter()
+            dishGetter.getDishes(completion: {[weak self] dishes in
                 DispatchQueue.main.async {
                     self?.dishes = dishes
                 }
@@ -29,9 +31,9 @@ class MainDishViewModel: ObservableObject{
         self.dishes = []
     }
     
-    init(coordinator: MainDishCoordinator) {
+    init(coordinator: MainDishCoordinator, cache: ImageCache) {
         self.coordinator = coordinator
         self.category = coordinator.category
-
+        self.cache = cache
     }
 }

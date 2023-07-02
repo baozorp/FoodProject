@@ -23,23 +23,32 @@ struct MainCategoryView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack{
-                ForEach(mainCategoryViewModel.categories) { category in
+                ForEach(mainCategoryViewModel.categories.sorted(by: {$0.id < $1.id})) { category in
                     NavigationLink(destination: mainCategoryViewModel.getDestinashion(category: category.name)){
                         ZStack(alignment: .topLeading) {
-                            Image(uiImage: category.image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                            
-                            GeometryReader { geometry in
-                                Text(category.name)
-                                    .foregroundColor(.black)
-                                    .font(.title)
-                                    .fontWeight(.semibold)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(2)
-                                    .frame(width: geometry.size.width * 0.8, alignment: .topLeading)
-                                    .padding()
+                            AsyncImage(url: URL(string: category.imageURL)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .overlay(
+                                        GeometryReader(content: { geometry in
+                                            Text(category.name)
+                                                .foregroundColor(.black)
+                                                .font(.title)
+                                                .fontWeight(.semibold)
+                                                .multilineTextAlignment(.leading)
+                                                .lineLimit(3)
+                                                .frame(width: geometry.size.width * 0.6, height: geometry.size.height, alignment: .topLeading)
+                                                .padding()
+                                        })
+                                    )
+                            }placeholder: {
+                                Text("")
+                                    .lineLimit(0)
+//                                ProgressView()
+//                                    .progressViewStyle(CircularProgressViewStyle(tint: Color.black))
                             }
+
                         }
                     }
                     .onTapGesture {
@@ -51,7 +60,14 @@ struct MainCategoryView: View {
             .padding(.vertical)
         }
         .padding(.horizontal)
-        .navigationBarItems(leading: leadingBarContent, trailing: trailingBarContent)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                leadingBarContent
+            }
+            ToolbarItem(placement: .navigationBarTrailing){
+                trailingBarContent
+            }
+        }
     }
     
     
@@ -85,10 +101,14 @@ struct MainCategoryView: View {
     private var trailingBarContent: some View {
         HStack{
             Spacer()
-            Image("account icon")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(Circle())
+            Button {
+            } label: {
+                Image("account icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
+            }
+            .buttonStyle(.plain)
         }
         .padding(.vertical, 3)
     }
