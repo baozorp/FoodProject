@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 enum Scenes{
     case main
     case search
@@ -27,7 +28,8 @@ protocol Coordinator{
 
 
 class AppCoordinator: Coordinator, ObservableObject{
-        
+    
+    
     var scene: Scenes
     var childs: [Coordinator] = []
     var parent: Coordinator!

@@ -26,7 +26,8 @@ struct MainCategoryView: View {
                 ForEach(mainViewModel.categories.sorted(by: {$0.id < $1.id})) { category in
                     NavigationLink(destination: mainViewModel.getDishesList(category: category.name)){
                         ZStack(alignment: .topLeading) {
-                            AppAsyncImage(url: URL(string: category.imageURL)!, cache: mainViewModel.cache) {
+                            AppAsyncImage(url: category.imageURL,
+                                          cache: mainViewModel.cache) {
                                 Text("")
                             }
                             .aspectRatio(contentMode: .fit)
@@ -42,7 +43,6 @@ struct MainCategoryView: View {
                                                 .padding()
                                         })
                                     )
-
                         }
                     }
                     .buttonStyle(.plain)
@@ -103,6 +103,7 @@ struct MainCategoryView: View {
         }
         .padding(.vertical, 3)
     }
+    
     init(coordinator: MainCategoryCoordinator) {
         self.mainViewModel = coordinator.mainViewModel
     }

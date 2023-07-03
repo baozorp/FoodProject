@@ -16,9 +16,14 @@ class CartCoordinator: Coordinator{
     
     var cache: ImageCache
     
+    @Published var cartViewModel: CartViewModel!
+    
+    
     func start() -> any View {
-        Text("2")
+        self.cartViewModel = CartViewModel(coordinator: self, cache: cache)
+        return CartView(coordinator: self)
     }
+    
     
 
     init(parent: Coordinator!, cache: ImageCache) {

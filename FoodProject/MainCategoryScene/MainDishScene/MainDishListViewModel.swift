@@ -28,10 +28,6 @@ class MainDishListViewModel: ObservableObject{
         self.dishes = []
     }
     
-    func getDescription(dish: DishModel) -> DishDescriptionView{
-        coordinator.getFullScreenDescription(dish: dish)
-    }
-    
     init(coordinator: MainCategoryCoordinator, category: String, cache: ImageCache) {
         self.coordinator = coordinator
         self.category = category

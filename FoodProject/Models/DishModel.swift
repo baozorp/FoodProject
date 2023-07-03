@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct DishModel: Identifiable{
+struct DishModel: Identifiable, Equatable{
     let id: Int
     let name: String
     let price: Int

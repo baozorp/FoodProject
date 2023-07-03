@@ -15,10 +15,11 @@ struct AppAsyncImage<Placeholder: View>: View {
     private let cache: ImageCache
     private let isResizable = false
     
-    init(url: URL, cache: ImageCache, @ViewBuilder placeholder: () -> Placeholder, @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:)) {
+    init(url: String, cache: ImageCache, @ViewBuilder placeholder: () -> Placeholder, @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:)) {
         self.placeholder = placeholder()
         self.image = image
         self.cache = cache
+        let url = URL(string: url) ?? URL(string: "https://www.nothing.png")!
         _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: cache))
     }
     

@@ -12,7 +12,11 @@ class DishFullDisplayInfo: ObservableObject{
     @Published var isNeedToShowFullDisplayInfo = false
     var dish: DishModel!{
         didSet{
-            isNeedToShowFullDisplayInfo.toggle()
+            isNeedToShowFullDisplayInfo = true
         }
+    }
+    
+    func hide(){
+        self.isNeedToShowFullDisplayInfo = false
     }
 }

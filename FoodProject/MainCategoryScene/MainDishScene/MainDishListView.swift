@@ -47,7 +47,8 @@ struct MainDishListView: View {
                     Color(UIColor(red: 248.0/255.0, green: 247.0/255.0, blue: 245.0/255.0, alpha: 1.0))
                         .overlay {
                             GeometryReader { geometry in
-                                AppAsyncImage(url: URL(string: dish.imageURL)!, cache: mainDishViewModel.cache) {
+                                AppAsyncImage(url: dish.imageURL,
+                                              cache: mainDishViewModel.cache) {
                                     ProgressView()
                                         .progressViewStyle(CircularProgressViewStyle(tint: Color.black))
                                         .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)

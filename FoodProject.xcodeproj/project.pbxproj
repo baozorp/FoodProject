@@ -19,6 +19,9 @@
 		B4133CA52A52ECE000D79E93 /* DishDesctiptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133CA42A52ECE000D79E93 /* DishDesctiptionView.swift */; };
 		B4133CA92A52ED5100D79E93 /* DishDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133CA82A52ED5100D79E93 /* DishDescriptionViewModel.swift */; };
 		B4133CAF2A532ED600D79E93 /* DishFullDisplayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133CAE2A532ED600D79E93 /* DishFullDisplayInfo.swift */; };
+		B41B33EC2A536063006EA23F /* CartArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B33EB2A536063006EA23F /* CartArray.swift */; };
+		B41B33EE2A53628B006EA23F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B33ED2A53628B006EA23F /* CartView.swift */; };
+		B41B33F22A5362A5006EA23F /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B33F12A5362A5006EA23F /* CartViewModel.swift */; };
 		B44093622A4DCE16001475A4 /* FoodProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44093612A4DCE16001475A4 /* FoodProjectApp.swift */; };
 		B44093662A4DCE17001475A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44093652A4DCE17001475A4 /* Assets.xcassets */; };
 		B44093692A4DCE17001475A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44093682A4DCE17001475A4 /* Preview Assets.xcassets */; };
@@ -45,6 +48,9 @@
 		B4133CA42A52ECE000D79E93 /* DishDesctiptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDesctiptionView.swift; sourceTree = "<group>"; };
 		B4133CA82A52ED5100D79E93 /* DishDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDescriptionViewModel.swift; sourceTree = "<group>"; };
 		B4133CAE2A532ED600D79E93 /* DishFullDisplayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishFullDisplayInfo.swift; sourceTree = "<group>"; };
+		B41B33EB2A536063006EA23F /* CartArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartArray.swift; sourceTree = "<group>"; };
+		B41B33ED2A53628B006EA23F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		B41B33F12A5362A5006EA23F /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		B440935E2A4DCE16001475A4 /* FoodProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44093612A4DCE16001475A4 /* FoodProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProjectApp.swift; sourceTree = "<group>"; };
 		B44093652A4DCE17001475A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 			children = (
 				B40C68072A4F510700F9C26A /* MainDishListView.swift */,
 				B40C68092A4F511400F9C26A /* MainDishListViewModel.swift */,
+				B4133CA32A52EC7600D79E93 /* DishDescription */,
 			);
 			path = MainDishScene;
 			sourceTree = "<group>";
@@ -134,12 +141,11 @@
 		B44093602A4DCE16001475A4 /* FoodProject */ = {
 			isa = PBXGroup;
 			children = (
+				B44093612A4DCE16001475A4 /* FoodProjectApp.swift */,
 				B4133C962A52DC4D00D79E93 /* AppAsyncImage */,
 				B4A01A992A4E0DB900243F7C /* Models */,
 				B4A01A832A4DF17600243F7C /* AppCoordinator */,
 				B4A01A8C2A4DFE2100243F7C /* MainCategoryScene */,
-				B44093612A4DCE16001475A4 /* FoodProjectApp.swift */,
-				B4133CA32A52EC7600D79E93 /* DishDescription */,
 				B4A01A932A4DFFA000243F7C /* CartScene */,
 				B40771D92A4F89D10013161F /* SearchScene */,
 				B40771DA2A4F8A130013161F /* AccountScene */,
@@ -183,7 +189,10 @@
 		B4A01A932A4DFFA000243F7C /* CartScene */ = {
 			isa = PBXGroup;
 			children = (
+				B41B33ED2A53628B006EA23F /* CartView.swift */,
+				B41B33F12A5362A5006EA23F /* CartViewModel.swift */,
 				B4A01A942A4DFFB400243F7C /* CartCoordinator.swift */,
+				B41B33EB2A536063006EA23F /* CartArray.swift */,
 			);
 			path = CartScene;
 			sourceTree = "<group>";
@@ -271,16 +280,19 @@
 				B40771D82A4F89CC0013161F /* SearchCoordinator.swift in Sources */,
 				B4A01A922A4DFE5300243F7C /* MainCategoryCoordinator.swift in Sources */,
 				B4133CA52A52ECE000D79E93 /* DishDesctiptionView.swift in Sources */,
+				B41B33EE2A53628B006EA23F /* CartView.swift in Sources */,
 				B40771DC2A4F8A340013161F /* AccountCoordinator.swift in Sources */,
 				B4133CAF2A532ED600D79E93 /* DishFullDisplayInfo.swift in Sources */,
 				B40C680A2A4F511400F9C26A /* MainDishListViewModel.swift in Sources */,
 				B4A01A8E2A4DFE3300243F7C /* MainCategoryView.swift in Sources */,
 				B4133CA92A52ED5100D79E93 /* DishDescriptionViewModel.swift in Sources */,
 				B4A01A9B2A4E0DD300243F7C /* DishModel.swift in Sources */,
+				B41B33F22A5362A5006EA23F /* CartViewModel.swift in Sources */,
 				B44093622A4DCE16001475A4 /* FoodProjectApp.swift in Sources */,
 				B4133CA02A52DC5D00D79E93 /* ImageCache.swift in Sources */,
 				B40458DD2A4F5B9E004950C5 /* AppModel.swift in Sources */,
 				B4A01A872A4DF26100243F7C /* AppCoordinator.swift in Sources */,
+				B41B33EC2A536063006EA23F /* CartArray.swift in Sources */,
 				B4133C9C2A52DC5D00D79E93 /* ImageLoader.swift in Sources */,
 				B40458DB2A4F57EE004950C5 /* AppCoordinatorViewModel.swift in Sources */,
 				B4A01A952A4DFFB400243F7C /* CartCoordinator.swift in Sources */,

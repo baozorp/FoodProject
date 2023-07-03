@@ -11,6 +11,7 @@ struct AppCoordinatorView: View {
     
     @ObservedObject var coordinator: AppCoordinator
     @StateObject var dishFullDisplayInfo: DishFullDisplayInfo = DishFullDisplayInfo()
+    @StateObject var cartArray: CartArray = CartArray()
     @State private var isNeedToShowFullDisplayInfo = false
     
     var body: some View {
@@ -21,6 +22,9 @@ struct AppCoordinatorView: View {
                         switch element.scene{
                         case .main:
                             element.view as! MainCategoryView
+                        case .cart:
+                            element.view as! CartView
+                            
                         default:
                             Text(element.name)
                         }
@@ -36,7 +40,6 @@ struct AppCoordinatorView: View {
                     .tag(element.scene)
                 }
             }
-            .environmentObject(dishFullDisplayInfo)
             //.allowsHitTesting(!coordinator.coordinatorViewModel.isNeedToShowFullDisplayInfo)
             .tint(.blue)
             if dishFullDisplayInfo.isNeedToShowFullDisplayInfo{
@@ -46,6 +49,8 @@ struct AppCoordinatorView: View {
                 Text("")
             }
         }
+        .environmentObject(dishFullDisplayInfo)
+        .environmentObject(cartArray)
     }
     
     init(coordinator: AppCoordinator) {
