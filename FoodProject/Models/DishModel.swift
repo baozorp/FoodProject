@@ -44,7 +44,7 @@ class DishGetter{
         }
         let session = URLSession.shared
         
-        
+
         let task = session.dataTask(with: url) { data, response, error in
             
             var dishes: [DishModel] = []
@@ -61,6 +61,7 @@ class DishGetter{
             }
             
             if let data = data {
+                
                 let categoriesJson = try! JSONDecoder().decode(ResponseCategoryDecoder.self, from: data)
                 for i in categoriesJson.dishes {
                     let dish = DishModel(id: i.id, name: i.name, price: i.price, weight: i.weight, description: i.description, imageURL: i.imageURL)

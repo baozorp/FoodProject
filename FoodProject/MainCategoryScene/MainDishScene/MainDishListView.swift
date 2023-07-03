@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct MainDishView: View {
+struct MainDishListView: View {
     
-    @State private var animationAmount = 1.0
-    unowned let coordinator: MainDishCoordinator
-    @ObservedObject var mainDishViewModel: MainDishViewModel
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
+
+    @ObservedObject var mainDishViewModel: MainDishListViewModel
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var fullDataScreen: DishFullDisplayInfo
     
     var body: some View {
-        ScrollView(showsIndicators: false){
-            LazyVGrid(columns: columns, spacing: 10){
+        ZStack{
+            ScrollView(showsIndicators: false){
                 gridContent
             }
         }
@@ -35,34 +36,42 @@ struct MainDishView: View {
                 trailingBarContent
             }
         }
+        
     }
     
     @ViewBuilder
     private var gridContent: some View {
-        ForEach(mainDishViewModel.dishes.sorted(by: {$0.id < $1.id})) { dish in
-            VStack{
-                Color(UIColor(red: 248.0/255.0, green: 247.0/255.0, blue: 245.0/255.0, alpha: 1.0))
-                    .overlay {
-                        GeometryReader { geometry in
-                            AppAsyncImage(url: URL(string: dish.imageURL)!, cache: mainDishViewModel.cache) {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: Color.black))
-                                    .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
+        LazyVGrid(columns: columns, spacing: 10){
+            ForEach(mainDishViewModel.dishes.sorted(by: {$0.id < $1.id})) { dish in
+                VStack{
+                    Color(UIColor(red: 248.0/255.0, green: 247.0/255.0, blue: 245.0/255.0, alpha: 1.0))
+                        .overlay {
+                            GeometryReader { geometry in
+                                AppAsyncImage(url: URL(string: dish.imageURL)!, cache: mainDishViewModel.cache) {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: Color.black))
+                                        .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
+                                }
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.leading, 5)
+                                .padding(.top, 5)
+                                .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                             }
-                            .aspectRatio(contentMode: .fit)
-                            .padding(.leading, 5)
-                            .padding(.top, 5)
-                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
-                        }
-                    }.aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-                Text(dish.name)
-                    .frame(alignment: .bottom)
-                    .lineLimit(2, reservesSpace: true)
+                        }.aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                    Text(dish.name)
+                        .frame(alignment: .bottom)
+                        .lineLimit(2, reservesSpace: true)
+                }
+                .padding(.top)
+                .onTapGesture {
+                    fullDataScreen.dish = dish
+                }
+                
             }
-            .padding(.top)
         }
     }
+    
     
     @ViewBuilder
     private var leadingBarContent: some View {
@@ -94,11 +103,8 @@ struct MainDishView: View {
         .padding(.vertical, 3)
     }
     
-    init(coordinator: MainDishCoordinator, mainDishViewModel: MainDishViewModel) {
-        self.coordinator = coordinator
+    init(with mainDishViewModel: MainDishListViewModel) {
         self.mainDishViewModel = mainDishViewModel
-        UINavigationBar.appearance().barTintColor = .clear
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
     }
     
 }

@@ -18,7 +18,7 @@ enum Scenes{
 protocol Coordinator{
     
     var childs: [Coordinator]{get set}
-    var parent: Coordinator! {get set}
+//    var parent: Coordinator! {get set}
     var scene: Scenes{get}
     var cache: ImageCache{get}
     
@@ -26,12 +26,13 @@ protocol Coordinator{
 }
 
 
-class AppCoordinator: Coordinator{
+class AppCoordinator: Coordinator, ObservableObject{
         
     var scene: Scenes
     var childs: [Coordinator] = []
     var parent: Coordinator!
     let cache: ImageCache
+    
     
     var coordinatorViewModel: AppCoordinatorViewModel!
     private var coordinatorView: AppCoordinatorView!
@@ -43,10 +44,14 @@ class AppCoordinator: Coordinator{
         self.childs.append(CartCoordinator(parent: self, cache: cache))
         self.childs.append(AccountCoordinator(parent: self, cache: cache))
         self.coordinatorViewModel = AppCoordinatorViewModel(coordinator: self)
-        self.coordinatorView = AppCoordinatorView(coordinator: self, appCoordinatorViewModel: self.coordinatorViewModel)
+        self.coordinatorView = AppCoordinatorView(coordinator: self)
         return coordinatorView
     }
     
+    func getFullScreenDescription(dish: DishModel) -> DishDescriptionView{
+        let dishDescriptionViewModel = DishDescriptionViewModel(dish: dish, coordinator: self, cache: self.cache)
+        return DishDescriptionView(with: dishDescriptionViewModel)
+    }
     
     init() {
         self.scene = .main

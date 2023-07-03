@@ -9,39 +9,47 @@ import SwiftUI
 
 struct AppCoordinatorView: View {
     
-    unowned let coordinator: AppCoordinator
-    @ObservedObject var appCoordinatorViewModel: AppCoordinatorViewModel
-    @State private var selectedTab: Scenes = .main
+    @ObservedObject var coordinator: AppCoordinator
+    @StateObject var dishFullDisplayInfo: DishFullDisplayInfo = DishFullDisplayInfo()
+    @State private var isNeedToShowFullDisplayInfo = false
     
     var body: some View {
-        
-        TabView(selection: $selectedTab){
-            ForEach(appCoordinatorViewModel.appElements){element in
-                NavigationView {
-                    switch element.scene{
-                    case .main:
-                        element.view as! MainCategoryView
-                    default:
+        ZStack{
+            TabView(selection: $coordinator.scene){
+                ForEach(coordinator.coordinatorViewModel.appElements){element in
+                    NavigationView {
+                        switch element.scene{
+                        case .main:
+                            element.view as! MainCategoryView
+                        default:
+                            Text(element.name)
+                        }
+                    }
+                    .onAppear{
+                        let navigationBarAppearance = UINavigationBarAppearance()
+                        navigationBarAppearance.configureWithOpaqueBackground()
+                        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance}
+                    .tabItem {
+                        element.image
                         Text(element.name)
                     }
+                    .tag(element.scene)
                 }
-                .onAppear{let navigationBarAppearance = UINavigationBarAppearance()
-                          navigationBarAppearance.configureWithOpaqueBackground()
-                          UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance}
-                .tabItem {
-                    element.image
-                    Text(element.name)
-                }
-                .tag(element.scene)
+            }
+            .environmentObject(dishFullDisplayInfo)
+            //.allowsHitTesting(!coordinator.coordinatorViewModel.isNeedToShowFullDisplayInfo)
+            .tint(.blue)
+            if dishFullDisplayInfo.isNeedToShowFullDisplayInfo{
+                coordinator.getFullScreenDescription(dish: dishFullDisplayInfo.dish)
+            }
+            else{
+                Text("")
             }
         }
-        .tint(.blue)
-
     }
     
-    init(coordinator: AppCoordinator, appCoordinatorViewModel: AppCoordinatorViewModel) {
+    init(coordinator: AppCoordinator) {
         self.coordinator = coordinator
-        self.appCoordinatorViewModel = appCoordinatorViewModel
     }
 }
 

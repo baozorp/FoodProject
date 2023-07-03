@@ -8,32 +8,40 @@
 import Foundation
 import SwiftUI
 
-class MainCategoryCoordinator: Coordinator{
+
+class MainCategoryCoordinator: Coordinator, ObservableObject{
     
     var scene: Scenes = .main
     var childs: [Coordinator] = []
-    var parent: Coordinator!
+    unowned var parent: AppCoordinator!
     var cache: ImageCache
     
     
-    private var mainViewModel: MainCategoryViewModel!
+    @Published var mainViewModel: MainCategoryViewModel!
+    @Published var dishViewModel: MainDishListViewModel!
+    @Published var dishDescriptionViewModel: DishDescriptionViewModel!
+    
+    
     private var mainView: MainCategoryView!
 
     func start() -> any View {
-        
+        self.mainViewModel = MainCategoryViewModel(coordinator: self, cache: cache)
+        self.mainView = MainCategoryView(coordinator: self)
         return mainView
     }
     
-    func nextDestination(category: String) -> any View{
-        self.childs = [MainDishCoordinator(parent: self, category: category, cache: cache)]
-        return self.childs[0].start()
+    func getDishesList(category: String) -> MainDishListView{
+        self.dishViewModel = MainDishListViewModel(coordinator: self, category: category, cache: self.cache)
+        return MainDishListView(with: self.dishViewModel)
+    }
+    
+    func getFullScreenDescription(dish: DishModel) -> DishDescriptionView{
+        parent.getFullScreenDescription(dish: dish)
     }
     
     
-    init(parent: Coordinator!, cache: ImageCache) {
+    init(parent: AppCoordinator, cache: ImageCache) {
         self.parent = parent
         self.cache = cache
-        self.mainViewModel = MainCategoryViewModel(coordinator: self)
-        self.mainView = MainCategoryView(coordinator: self, mainCategoryViewModel: self.mainViewModel)
     }
 }

@@ -11,12 +11,14 @@
 		B40458DD2A4F5B9E004950C5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40458DC2A4F5B9E004950C5 /* AppModel.swift */; };
 		B40771D82A4F89CC0013161F /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40771D72A4F89CC0013161F /* SearchCoordinator.swift */; };
 		B40771DC2A4F8A340013161F /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40771DB2A4F8A340013161F /* AccountCoordinator.swift */; };
-		B40C68062A4F50FA00F9C26A /* MainDishCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68052A4F50FA00F9C26A /* MainDishCoordinator.swift */; };
-		B40C68082A4F510700F9C26A /* MainDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68072A4F510700F9C26A /* MainDishView.swift */; };
-		B40C680A2A4F511400F9C26A /* MainDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68092A4F511400F9C26A /* MainDishViewModel.swift */; };
+		B40C68082A4F510700F9C26A /* MainDishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68072A4F510700F9C26A /* MainDishListView.swift */; };
+		B40C680A2A4F511400F9C26A /* MainDishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C68092A4F511400F9C26A /* MainDishListViewModel.swift */; };
 		B4133C9C2A52DC5D00D79E93 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133C972A52DC5D00D79E93 /* ImageLoader.swift */; };
-		B4133C9F2A52DC5D00D79E93 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133C9A2A52DC5D00D79E93 /* AsyncImage.swift */; };
+		B4133C9F2A52DC5D00D79E93 /* AppAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133C9A2A52DC5D00D79E93 /* AppAsyncImage.swift */; };
 		B4133CA02A52DC5D00D79E93 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133C9B2A52DC5D00D79E93 /* ImageCache.swift */; };
+		B4133CA52A52ECE000D79E93 /* DishDesctiptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133CA42A52ECE000D79E93 /* DishDesctiptionView.swift */; };
+		B4133CA92A52ED5100D79E93 /* DishDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133CA82A52ED5100D79E93 /* DishDescriptionViewModel.swift */; };
+		B4133CAF2A532ED600D79E93 /* DishFullDisplayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4133CAE2A532ED600D79E93 /* DishFullDisplayInfo.swift */; };
 		B44093622A4DCE16001475A4 /* FoodProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44093612A4DCE16001475A4 /* FoodProjectApp.swift */; };
 		B44093662A4DCE17001475A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44093652A4DCE17001475A4 /* Assets.xcassets */; };
 		B44093692A4DCE17001475A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44093682A4DCE17001475A4 /* Preview Assets.xcassets */; };
@@ -35,12 +37,14 @@
 		B40458DC2A4F5B9E004950C5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		B40771D72A4F89CC0013161F /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		B40771DB2A4F8A340013161F /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
-		B40C68052A4F50FA00F9C26A /* MainDishCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishCoordinator.swift; sourceTree = "<group>"; };
-		B40C68072A4F510700F9C26A /* MainDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishView.swift; sourceTree = "<group>"; };
-		B40C68092A4F511400F9C26A /* MainDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishViewModel.swift; sourceTree = "<group>"; };
+		B40C68072A4F510700F9C26A /* MainDishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishListView.swift; sourceTree = "<group>"; };
+		B40C68092A4F511400F9C26A /* MainDishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDishListViewModel.swift; sourceTree = "<group>"; };
 		B4133C972A52DC5D00D79E93 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		B4133C9A2A52DC5D00D79E93 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		B4133C9A2A52DC5D00D79E93 /* AppAsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAsyncImage.swift; sourceTree = "<group>"; };
 		B4133C9B2A52DC5D00D79E93 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		B4133CA42A52ECE000D79E93 /* DishDesctiptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDesctiptionView.swift; sourceTree = "<group>"; };
+		B4133CA82A52ED5100D79E93 /* DishDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDescriptionViewModel.swift; sourceTree = "<group>"; };
+		B4133CAE2A532ED600D79E93 /* DishFullDisplayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishFullDisplayInfo.swift; sourceTree = "<group>"; };
 		B440935E2A4DCE16001475A4 /* FoodProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44093612A4DCE16001475A4 /* FoodProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProjectApp.swift; sourceTree = "<group>"; };
 		B44093652A4DCE17001475A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,9 +89,8 @@
 		B40C68042A4F4FD600F9C26A /* MainDishScene */ = {
 			isa = PBXGroup;
 			children = (
-				B40C68072A4F510700F9C26A /* MainDishView.swift */,
-				B40C68092A4F511400F9C26A /* MainDishViewModel.swift */,
-				B40C68052A4F50FA00F9C26A /* MainDishCoordinator.swift */,
+				B40C68072A4F510700F9C26A /* MainDishListView.swift */,
+				B40C68092A4F511400F9C26A /* MainDishListViewModel.swift */,
 			);
 			path = MainDishScene;
 			sourceTree = "<group>";
@@ -95,11 +98,21 @@
 		B4133C962A52DC4D00D79E93 /* AppAsyncImage */ = {
 			isa = PBXGroup;
 			children = (
-				B4133C9A2A52DC5D00D79E93 /* AsyncImage.swift */,
+				B4133C9A2A52DC5D00D79E93 /* AppAsyncImage.swift */,
 				B4133C9B2A52DC5D00D79E93 /* ImageCache.swift */,
 				B4133C972A52DC5D00D79E93 /* ImageLoader.swift */,
 			);
 			path = AppAsyncImage;
+			sourceTree = "<group>";
+		};
+		B4133CA32A52EC7600D79E93 /* DishDescription */ = {
+			isa = PBXGroup;
+			children = (
+				B4133CAE2A532ED600D79E93 /* DishFullDisplayInfo.swift */,
+				B4133CA42A52ECE000D79E93 /* DishDesctiptionView.swift */,
+				B4133CA82A52ED5100D79E93 /* DishDescriptionViewModel.swift */,
+			);
+			path = DishDescription;
 			sourceTree = "<group>";
 		};
 		B44093552A4DCE16001475A4 = {
@@ -125,8 +138,8 @@
 				B4A01A992A4E0DB900243F7C /* Models */,
 				B4A01A832A4DF17600243F7C /* AppCoordinator */,
 				B4A01A8C2A4DFE2100243F7C /* MainCategoryScene */,
-				B40C68042A4F4FD600F9C26A /* MainDishScene */,
 				B44093612A4DCE16001475A4 /* FoodProjectApp.swift */,
+				B4133CA32A52EC7600D79E93 /* DishDescription */,
 				B4A01A932A4DFFA000243F7C /* CartScene */,
 				B40771D92A4F89D10013161F /* SearchScene */,
 				B40771DA2A4F8A130013161F /* AccountScene */,
@@ -162,6 +175,7 @@
 				B4A01A8F2A4DFE4100243F7C /* MainCategoryViewModel.swift */,
 				B4A01A912A4DFE5300243F7C /* MainCategoryCoordinator.swift */,
 				B4A01A9C2A4E0ED200243F7C /* CategoryModel.swift */,
+				B40C68042A4F4FD600F9C26A /* MainDishScene */,
 			);
 			path = MainCategoryScene;
 			sourceTree = "<group>";
@@ -252,14 +266,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4133C9F2A52DC5D00D79E93 /* AsyncImage.swift in Sources */,
+				B4133C9F2A52DC5D00D79E93 /* AppAsyncImage.swift in Sources */,
 				B4A01A902A4DFE4100243F7C /* MainCategoryViewModel.swift in Sources */,
 				B40771D82A4F89CC0013161F /* SearchCoordinator.swift in Sources */,
-				B40C68062A4F50FA00F9C26A /* MainDishCoordinator.swift in Sources */,
 				B4A01A922A4DFE5300243F7C /* MainCategoryCoordinator.swift in Sources */,
+				B4133CA52A52ECE000D79E93 /* DishDesctiptionView.swift in Sources */,
 				B40771DC2A4F8A340013161F /* AccountCoordinator.swift in Sources */,
-				B40C680A2A4F511400F9C26A /* MainDishViewModel.swift in Sources */,
+				B4133CAF2A532ED600D79E93 /* DishFullDisplayInfo.swift in Sources */,
+				B40C680A2A4F511400F9C26A /* MainDishListViewModel.swift in Sources */,
 				B4A01A8E2A4DFE3300243F7C /* MainCategoryView.swift in Sources */,
+				B4133CA92A52ED5100D79E93 /* DishDescriptionViewModel.swift in Sources */,
 				B4A01A9B2A4E0DD300243F7C /* DishModel.swift in Sources */,
 				B44093622A4DCE16001475A4 /* FoodProjectApp.swift in Sources */,
 				B4133CA02A52DC5D00D79E93 /* ImageCache.swift in Sources */,
@@ -270,7 +286,7 @@
 				B4A01A952A4DFFB400243F7C /* CartCoordinator.swift in Sources */,
 				B4A01A9D2A4E0ED200243F7C /* CategoryModel.swift in Sources */,
 				B4A01A982A4E02AD00243F7C /* AppCoordinatorView.swift in Sources */,
-				B40C68082A4F510700F9C26A /* MainDishView.swift in Sources */,
+				B40C68082A4F510700F9C26A /* MainDishListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

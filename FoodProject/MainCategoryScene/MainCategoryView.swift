@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainCategoryView: View {
-    unowned let coordinator: MainCategoryCoordinator
-    @ObservedObject var mainCategoryViewModel: MainCategoryViewModel
+    
+    @ObservedObject var mainViewModel: MainCategoryViewModel
     
     private var date: String{
         let dateFormatter = DateFormatter()
@@ -23,13 +23,13 @@ struct MainCategoryView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack{
-                ForEach(mainCategoryViewModel.categories.sorted(by: {$0.id < $1.id})) { category in
-                    NavigationLink(destination: mainCategoryViewModel.getDestinashion(category: category.name)){
+                ForEach(mainViewModel.categories.sorted(by: {$0.id < $1.id})) { category in
+                    NavigationLink(destination: mainViewModel.getDishesList(category: category.name)){
                         ZStack(alignment: .topLeading) {
-                            AsyncImage(url: URL(string: category.imageURL)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                            AppAsyncImage(url: URL(string: category.imageURL)!, cache: mainViewModel.cache) {
+                                Text("")
+                            }
+                            .aspectRatio(contentMode: .fit)
                                     .overlay(
                                         GeometryReader(content: { geometry in
                                             Text(category.name)
@@ -42,17 +42,8 @@ struct MainCategoryView: View {
                                                 .padding()
                                         })
                                     )
-                            }placeholder: {
-                                Text("")
-                                    .lineLimit(0)
-//                                ProgressView()
-//                                    .progressViewStyle(CircularProgressViewStyle(tint: Color.black))
-                            }
 
                         }
-                    }
-                    .onTapGesture {
-                        print("Print 1")
                     }
                     .buttonStyle(.plain)
                 }
@@ -112,5 +103,7 @@ struct MainCategoryView: View {
         }
         .padding(.vertical, 3)
     }
-    
+    init(coordinator: MainCategoryCoordinator) {
+        self.mainViewModel = coordinator.mainViewModel
+    }
 }

@@ -10,7 +10,8 @@ import Foundation
 class AppCoordinatorViewModel: ObservableObject{
     
     private unowned let coordinator: AppCoordinator!
-    @Published var appElements: [AppModel]
+
+    var appElements: [AppModel]
     
     init(coordinator: AppCoordinator) {
         self.coordinator = coordinator

@@ -10,17 +10,12 @@ import SwiftUI
 @main
 struct FoodProjectApp: App {
     
-    var coordinator: AppCoordinator
-    var view: AppCoordinatorView
+    @StateObject var coordinator = AppCoordinator()
+
     
     var body: some Scene {
         WindowGroup {
-            self.view
+            self.coordinator.start() as! AppCoordinatorView
         }
-    }
-    
-    init() {
-        self.coordinator = AppCoordinator()
-        self.view = self.coordinator.start() as! AppCoordinatorView
     }
 }
