@@ -17,6 +17,7 @@ struct DishModel: Identifiable, Equatable{
     let imageURL: String
     let tegs: [String]
     var countInCart: Int = 0
+    var isNeedBeShowen: Bool = true
 }
 
 fileprivate struct ResponseCategoryDecoder: Decodable{
@@ -68,7 +69,6 @@ class DishGetter{
                 let categoriesJson = try! JSONDecoder().decode(ResponseCategoryDecoder.self, from: data)
                 for i in categoriesJson.dishes {
                     let dish = DishModel(id: i.id, name: i.name, price: i.price, weight: i.weight, description: i.description, imageURL: i.imageURL, tegs: i.tegs)
-                    print(i.tegs)
                     dishes.append(dish)
                 }
                 DispatchQueue.main.async{

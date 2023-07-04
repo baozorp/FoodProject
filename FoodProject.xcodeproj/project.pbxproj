@@ -22,6 +22,7 @@
 		B41B33EC2A536063006EA23F /* CartArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B33EB2A536063006EA23F /* CartArray.swift */; };
 		B41B33EE2A53628B006EA23F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B33ED2A53628B006EA23F /* CartView.swift */; };
 		B41B33F22A5362A5006EA23F /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B33F12A5362A5006EA23F /* CartViewModel.swift */; };
+		B429E5CC2A54BB540005308A /* NavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B429E5CB2A54BB540005308A /* NavigationBarItems.swift */; };
 		B44093622A4DCE16001475A4 /* FoodProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44093612A4DCE16001475A4 /* FoodProjectApp.swift */; };
 		B44093662A4DCE17001475A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44093652A4DCE17001475A4 /* Assets.xcassets */; };
 		B44093692A4DCE17001475A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44093682A4DCE17001475A4 /* Preview Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		B41B33EB2A536063006EA23F /* CartArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartArray.swift; sourceTree = "<group>"; };
 		B41B33ED2A53628B006EA23F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		B41B33F12A5362A5006EA23F /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		B429E5CB2A54BB540005308A /* NavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarItems.swift; sourceTree = "<group>"; };
 		B440935E2A4DCE16001475A4 /* FoodProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44093612A4DCE16001475A4 /* FoodProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProjectApp.swift; sourceTree = "<group>"; };
 		B44093652A4DCE17001475A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,14 +94,14 @@
 			path = AccountScene;
 			sourceTree = "<group>";
 		};
-		B40C68042A4F4FD600F9C26A /* MainDishScene */ = {
+		B40C68042A4F4FD600F9C26A /* MainDishListScene */ = {
 			isa = PBXGroup;
 			children = (
 				B40C68072A4F510700F9C26A /* MainDishListView.swift */,
 				B40C68092A4F511400F9C26A /* MainDishListViewModel.swift */,
 				B4133CA32A52EC7600D79E93 /* DishDescription */,
 			);
-			path = MainDishScene;
+			path = MainDishListScene;
 			sourceTree = "<group>";
 		};
 		B4133C962A52DC4D00D79E93 /* AppAsyncImage */ = {
@@ -170,6 +172,7 @@
 				B40458DA2A4F57EE004950C5 /* AppCoordinatorViewModel.swift */,
 				B4A01A862A4DF26100243F7C /* AppCoordinator.swift */,
 				B40458DC2A4F5B9E004950C5 /* AppModel.swift */,
+				B429E5CB2A54BB540005308A /* NavigationBarItems.swift */,
 			);
 			path = AppCoordinator;
 			sourceTree = "<group>";
@@ -181,7 +184,7 @@
 				B4A01A8F2A4DFE4100243F7C /* MainCategoryViewModel.swift */,
 				B4A01A912A4DFE5300243F7C /* MainCategoryCoordinator.swift */,
 				B4A01A9C2A4E0ED200243F7C /* CategoryModel.swift */,
-				B40C68042A4F4FD600F9C26A /* MainDishScene */,
+				B40C68042A4F4FD600F9C26A /* MainDishListScene */,
 			);
 			path = MainCategoryScene;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				B41B33EE2A53628B006EA23F /* CartView.swift in Sources */,
 				B40771DC2A4F8A340013161F /* AccountCoordinator.swift in Sources */,
 				B4133CAF2A532ED600D79E93 /* DishFullDisplayInfo.swift in Sources */,
+				B429E5CC2A54BB540005308A /* NavigationBarItems.swift in Sources */,
 				B40C680A2A4F511400F9C26A /* MainDishListViewModel.swift in Sources */,
 				B4A01A8E2A4DFE3300243F7C /* MainCategoryView.swift in Sources */,
 				B4133CA92A52ED5100D79E93 /* DishDescriptionViewModel.swift in Sources */,

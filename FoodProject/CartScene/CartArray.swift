@@ -37,6 +37,12 @@ class CartArray: ObservableObject{
         }
     }
     
+    func contain(dishWithId dishID: Int) -> Bool{
+        return self.cartArray.contains(where: { dish in
+            dish.id == dishID
+        })
+    }
+    
     func getCartCost()->Int{
         var cost: Int = 0
         for i in self.cartArray{

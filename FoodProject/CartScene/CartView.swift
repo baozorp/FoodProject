@@ -99,14 +99,6 @@ struct CartView: View {
                 }
                 .padding(.all)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    leadingBarContent
-                }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    trailingBarContent
-                }
-            }
 
         Button {
         } label: {
@@ -125,51 +117,14 @@ struct CartView: View {
         .buttonStyle(.plain)
         .foregroundColor(.blue)
         }
-    }
-    
-    
-    
-    
-    // For leading Navigation Bar items
-    @ViewBuilder
-    private var leadingBarContent: some View {
-        HStack {
-            Image(systemName: "mappin.and.ellipse")
-            VStack(alignment: .leading){
-                Text("Москва")
-                    .fontWeight(.semibold)
-                    .frame(alignment: .leading)
-                    .font(.subheadline)
-                Text(date)
-                    .foregroundColor(Color(
-                        red: Double(0) / 255,
-                        green: Double(0) / 255,
-                        blue: Double(0) / 255,
-                        opacity: Double(255/2) / 255)
-                    )
-                    .frame(alignment: .leading)
-                    .font(.caption)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                InfoBarItem()
             }
-            Spacer()
-        }
-        .padding(.vertical, 3)
-    }
-    
-    // For trailing Navigation Bar items
-    @ViewBuilder
-    private var trailingBarContent: some View {
-        HStack{
-            Spacer()
-            Button {
-            } label: {
-                Image("account icon")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(Circle())
+            ToolbarItem(placement: .navigationBarTrailing){
+                ProfileBarItem()
             }
-            .buttonStyle(.plain)
         }
-        .padding(.vertical, 3)
     }
     
     init(coordinator: CartCoordinator) {

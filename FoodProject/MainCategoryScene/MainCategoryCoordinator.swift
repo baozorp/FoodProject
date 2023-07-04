@@ -17,25 +17,24 @@ class MainCategoryCoordinator: Coordinator, ObservableObject{
     var cache: ImageCache
     
     
-    @StateObject var mainViewModel: MainCategoryViewModel
-    @Published var dishViewModel: MainDishListViewModel!
+    @Published var mainViewModel: MainCategoryViewModel!
+    @Published var dishListViewModel: MainDishListViewModel!
     @Published var dishDescriptionViewModel: DishDescriptionViewModel!
     
 
 
     func start() -> any View {
-        _mainViewModel = StateObject(wrappedValue: MainCategoryViewModel(coordinator: self, cache: self.cache))
+        self.mainViewModel = MainCategoryViewModel(coordinator: self, cache: self.cache)
         return MainCategoryView(coordinator: self)
     }
     
     func getDishesList(category: String) -> MainDishListView{
-        self.dishViewModel = MainDishListViewModel(coordinator: self, category: category, cache: self.cache)
-        return MainDishListView(with: self.dishViewModel)
+        self.dishListViewModel = MainDishListViewModel(coordinator: self, category: category, cache: self.cache)
+        return MainDishListView(with: self.dishListViewModel)
     }
     
     init(parent: AppCoordinator, cache: ImageCache) {
         self.parent = parent
         self.cache = cache
-        _mainViewModel = StateObject(wrappedValue: MainCategoryViewModel(coordinator: MainCategoryCoordinator(parent: parent, cache: cache), cache: self.cache))
     }
 }

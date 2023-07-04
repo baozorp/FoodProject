@@ -29,9 +29,10 @@ struct AppCoordinatorView: View {
                             Text(element.name)
                         }
                     }
+                    .padding(.bottom, 0.1)
                     .onAppear{
                         let tabBarAppearance = UITabBarAppearance()
-                        tabBarAppearance.configureWithOpaqueBackground()
+                        tabBarAppearance.configureWithDefaultBackground()
                         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
                         let navigationBarAppearance = UINavigationBarAppearance()
                         navigationBarAppearance.configureWithOpaqueBackground()
@@ -42,6 +43,7 @@ struct AppCoordinatorView: View {
                     }
                     .tag(element.scene)
                 }
+                .padding(.bottom, 0.1)
             }
             //.allowsHitTesting(!coordinator.coordinatorViewModel.isNeedToShowFullDisplayInfo)
             .tint(.blue)

@@ -63,27 +63,52 @@ struct DishDescriptionView: View{
                     }
                     .padding(.vertical)
                 }
-                
-                
             }
             Button {
-                cartArray.addDishToCart(dish: dishDescriptionViewModel.dish)
+                withAnimation {
+                    if !cartArray.contain(dishWithId: dishDescriptionViewModel.dish.id){
+                        cartArray.addDishToCart(dish: dishDescriptionViewModel.dish)
+                    }
+                }
             } label: {
-                GeometryReader{geometry in
-                    Rectangle()
-                        .frame(width: geometry.size.width)
-                        .overlay {
-                            Text("Добавить в корзину")
-                                .foregroundColor(Color.white)
-                        }
-                        .cornerRadius(20)
+                if !cartArray.contain(dishWithId: dishDescriptionViewModel.dish.id){
+                    GeometryReader{geometry in
+                        Rectangle()
+                            .fill(.blue)
+                            .frame(width: geometry.size.width)
+                            .overlay {
+                                Text("Добавить в корзину")
+                                    .foregroundColor(Color.white)
+                            }
+                            .cornerRadius(20)
+                    }
+                }
+                else{
+                    GeometryReader{geometry in
+                        Rectangle()
+                            .fill(.thickMaterial)
+                            .frame(width: geometry.size.width)
+                            .overlay {
+                                Text("Добавлено в корзину")
+                                    .foregroundColor(Color.black)
+                            }
+                            .cornerRadius(20)
+                    }
                 }
             }
             .frame(height: UIScreen.main.bounds.height/12)
             .padding(.horizontal)
             .padding(.bottom)
             .buttonStyle(.plain)
-            .foregroundColor(.blue)
+//            .foregroundColor(
+//                if !cartArray.contain(dishWithId: dishDescriptionViewModel.dish.id){
+//                    .blue
+//                }
+//                else{
+//                    .ultraThinMaterial
+//                }
+//            )
+            
         }
         
     }
@@ -95,20 +120,32 @@ struct DishDescriptionView: View{
                 .cornerRadius(5)
                 .overlay{
                     GeometryReader{ geometry in
-                        AsyncImage(url: URL(string: dishDescriptionViewModel.dish.imageURL)!) { image in
-                            image
+                        if let image = dishDescriptionViewModel.cache[URL(string: dishDescriptionViewModel.dish.imageURL)!]
+                        {
+                            Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: geometry.size.width*0.9, height: geometry.size.width*0.9, alignment: .center)
                                 .padding(.leading)
                                 .padding(.top)
-                        } placeholder: {
-                            Text("")
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width*0.9, height: geometry.size.width*0.9, alignment: .center)
-                                .padding(.leading)
-                                .padding(.top)
                         }
+                        else{
+                            AsyncImage(url: URL(string: dishDescriptionViewModel.dish.imageURL)!) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: geometry.size.width*0.9, height: geometry.size.width*0.9, alignment: .center)
+                                    .padding(.leading)
+                                    .padding(.top)
+                            } placeholder: {
+                                Text("")
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: geometry.size.width*0.9, height: geometry.size.width*0.9, alignment: .center)
+                                    .padding(.leading)
+                                    .padding(.top)
+                            }
+                        }
+
                     }
                     .aspectRatio(contentMode: .fit)
                 }
