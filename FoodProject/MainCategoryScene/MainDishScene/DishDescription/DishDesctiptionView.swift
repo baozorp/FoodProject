@@ -59,29 +59,31 @@ struct DishDescriptionView: View{
                         Text(dishDescriptionViewModel.dish.description)
                             .padding(.vertical, 4)
                             .padding(.leading)
-                        Button {
-                            cartArray.addDishToCart(dish: dishDescriptionViewModel.dish)
-                        } label: {
-                            GeometryReader{geometry in
-                                Rectangle()
-                                    .frame(width: geometry.size.width)
-                                    .overlay {
-                                        Text("Добавить в корзину")
-                                            .foregroundColor(Color.white)
-                                    }
-                                    .cornerRadius(20)
-                            }
-                        }
-                        .frame(height: UIScreen.main.bounds.height/10)
-                        .padding(.horizontal)
-                        .buttonStyle(.plain)
-                        .foregroundColor(.blue)
                         Spacer()
                     }
                     .padding(.vertical)
                 }
-                buttons
+                
+                
             }
+            Button {
+                cartArray.addDishToCart(dish: dishDescriptionViewModel.dish)
+            } label: {
+                GeometryReader{geometry in
+                    Rectangle()
+                        .frame(width: geometry.size.width)
+                        .overlay {
+                            Text("Добавить в корзину")
+                                .foregroundColor(Color.white)
+                        }
+                        .cornerRadius(20)
+                }
+            }
+            .frame(height: UIScreen.main.bounds.height/12)
+            .padding(.horizontal)
+            .padding(.bottom)
+            .buttonStyle(.plain)
+            .foregroundColor(.blue)
         }
         
     }
@@ -90,7 +92,7 @@ struct DishDescriptionView: View{
         
         ZStack{
             Color(uiColor: UIColor(red: 248.0/255.0, green: 247.0/255.0, blue: 245.0/255.0, alpha: 1.0))
-                .cornerRadius(40)
+                .cornerRadius(5)
                 .overlay{
                     GeometryReader{ geometry in
                         AsyncImage(url: URL(string: dishDescriptionViewModel.dish.imageURL)!) { image in
@@ -112,6 +114,7 @@ struct DishDescriptionView: View{
                 }
                 .padding(.top)
                 .padding(.horizontal)
+            buttons
         }
         
     }
@@ -119,20 +122,23 @@ struct DishDescriptionView: View{
     private var buttons: some View{
         GeometryReader{ geometry in
             HStack{
+                Spacer()
                 Button {
                 } label: {
                     Rectangle()
                         .foregroundColor(.white)
-                        .cornerRadius(20)
+                        .cornerRadius(5)
                         .aspectRatio(contentMode: .fit)
                         .overlay {
                             Image(systemName: "heart")
                                 .resizable()
                                 .padding()
                         }
-                        .frame(width: UIScreen.main.bounds.width/6,
-                               height: UIScreen.main.bounds.width/6)
+                        .frame(width: geometry.size.width/6,
+                               height: geometry.size.width/6)
+                        .aspectRatio(contentMode: .fit)
                 }
+                .padding(.top, 20)
                 .foregroundColor(.black)
                 .buttonStyle(.plain)
                 Button {
@@ -140,26 +146,30 @@ struct DishDescriptionView: View{
                 } label: {
                     Rectangle()
                         .foregroundColor(.white)
-                        .cornerRadius(20)
+                        .cornerRadius(5)
                         .aspectRatio(contentMode: .fit)
                         .overlay {
                             Image(systemName: "xmark")
                                 .resizable()
                                 .padding()
                         }
-                        .frame(width: UIScreen.main.bounds.width/6,
-                               height: UIScreen.main.bounds.width/6)
+                        .frame(width: geometry.size.width/6,
+                               height: geometry.size.width/6)
+                        .aspectRatio(contentMode: .fit)
+                    
                 }
+                .padding(.trailing, 20)
+                .padding(.top, 20)
                 .foregroundColor(.black)
                 .buttonStyle(.plain)
-                .padding(.trailing, 10)
+                
             }
             .frame(width: geometry.size.width,
                    height: geometry.size.height,
                    alignment: .topTrailing)
-            .padding(.top)
+
+
         }
-        
     }
     
     init(with dishDescriptionViewModel: DishDescriptionViewModel) {

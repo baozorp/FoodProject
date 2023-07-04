@@ -17,14 +17,14 @@ class MainCategoryCoordinator: Coordinator, ObservableObject{
     var cache: ImageCache
     
     
-    @Published var mainViewModel: MainCategoryViewModel!
+    @StateObject var mainViewModel: MainCategoryViewModel
     @Published var dishViewModel: MainDishListViewModel!
     @Published var dishDescriptionViewModel: DishDescriptionViewModel!
     
 
 
     func start() -> any View {
-        self.mainViewModel = MainCategoryViewModel(coordinator: self, cache: cache)
+        _mainViewModel = StateObject(wrappedValue: MainCategoryViewModel(coordinator: self, cache: self.cache))
         return MainCategoryView(coordinator: self)
     }
     
@@ -36,5 +36,6 @@ class MainCategoryCoordinator: Coordinator, ObservableObject{
     init(parent: AppCoordinator, cache: ImageCache) {
         self.parent = parent
         self.cache = cache
+        _mainViewModel = StateObject(wrappedValue: MainCategoryViewModel(coordinator: MainCategoryCoordinator(parent: parent, cache: cache), cache: self.cache))
     }
 }

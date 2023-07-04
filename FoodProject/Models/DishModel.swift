@@ -12,9 +12,11 @@ struct DishModel: Identifiable, Equatable{
     let id: Int
     let name: String
     let price: Int
-    var weight: Int
-    var description: String
+    let weight: Int
+    let description: String
     let imageURL: String
+    let tegs: [String]
+    var countInCart: Int = 0
 }
 
 fileprivate struct ResponseCategoryDecoder: Decodable{
@@ -28,9 +30,10 @@ fileprivate struct DishDecoder: Decodable{
     let weight: Int
     let description: String
     let imageURL: String
+    let tegs: [String]
     
     enum CodingKeys: String, CodingKey {
-        case id, name, price, weight, description
+        case id, name, price, weight, description, tegs
         case imageURL = "image_url"
     }
 }
@@ -64,7 +67,8 @@ class DishGetter{
                 
                 let categoriesJson = try! JSONDecoder().decode(ResponseCategoryDecoder.self, from: data)
                 for i in categoriesJson.dishes {
-                    let dish = DishModel(id: i.id, name: i.name, price: i.price, weight: i.weight, description: i.description, imageURL: i.imageURL)
+                    let dish = DishModel(id: i.id, name: i.name, price: i.price, weight: i.weight, description: i.description, imageURL: i.imageURL, tegs: i.tegs)
+                    print(i.tegs)
                     dishes.append(dish)
                 }
                 DispatchQueue.main.async{

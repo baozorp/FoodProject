@@ -59,6 +59,11 @@ struct MainCategoryView: View {
                 trailingBarContent
             }
         }
+        .onAppear{
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithOpaqueBackground()
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
     }
     
     
