@@ -63,6 +63,7 @@ struct DishDescriptionView: View{
                     }
                     .padding(.vertical)
                 }
+                buttons
             }
             Button {
                 withAnimation {
@@ -100,15 +101,6 @@ struct DishDescriptionView: View{
             .padding(.horizontal)
             .padding(.bottom)
             .buttonStyle(.plain)
-//            .foregroundColor(
-//                if !cartArray.contain(dishWithId: dishDescriptionViewModel.dish.id){
-//                    .blue
-//                }
-//                else{
-//                    .ultraThinMaterial
-//                }
-//            )
-            
         }
         
     }
@@ -151,9 +143,7 @@ struct DishDescriptionView: View{
                 }
                 .padding(.top)
                 .padding(.horizontal)
-            buttons
         }
-        
     }
     
     private var buttons: some View{

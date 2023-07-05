@@ -50,11 +50,6 @@ struct MainCategoryView: View {
                 ProfileBarItem()
             }
         }
-        .onAppear{
-            let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithOpaqueBackground()
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-        }
     }
 
     

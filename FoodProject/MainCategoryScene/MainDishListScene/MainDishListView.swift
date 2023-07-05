@@ -12,7 +12,7 @@ struct MainDishListView: View {
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     
     @ObservedObject var mainDishViewModel: MainDishListViewModel
-    
+    @Environment(\.scenePhase) var scenePhase
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var fullDataScreen: DishFullDisplayInfo
     
@@ -33,6 +33,12 @@ struct MainDishListView: View {
         }
         .onAppear{
             mainDishViewModel.getDishes()
+        }
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .active{
+                mainDishViewModel.getDishes()
+                print(newValue)
+            }
         }
     }
     

@@ -43,7 +43,6 @@ struct AppCoordinatorView: View {
                     }
                     .tag(element.scene)
                 }
-                .padding(.bottom, 0.1)
             }
             //.allowsHitTesting(!coordinator.coordinatorViewModel.isNeedToShowFullDisplayInfo)
             .tint(.blue)
