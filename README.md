@@ -2,7 +2,7 @@
 
 This iOS application allows users to browse and order dishes from a menu. Built using Swift and SwiftUI, the app follows the MVVM (Model-View-ViewModel) architecture pattern with the addition of a coordinator to handle navigation.
 
-[Видеозапись работы](https://drive.google.com/file/d/1TzpfLgOpdldTcgn6qaYeUIJqb8VMfXjt/view?usp=sharing)
+[App Demo Video](https://drive.google.com/file/d/1TzpfLgOpdldTcgn6qaYeUIJqb8VMfXjt/view?usp=sharing)
 
 #### Features:
 
